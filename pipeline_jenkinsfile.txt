@@ -18,6 +18,9 @@ pipeline {
                 }
                 failure{
                     echo "=======execute failure======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Build Status Update Notification",
+                    body: "Build Failed"
                 }
             }
         }
