@@ -55,14 +55,14 @@ pipeline {
         }
     }
     post{
-                    always{
-                        echo "=======always======="
-                    }
-                    success{
-                        echo "=======pipeline executed successful======="
-                    }
-                    failure{
-                        echo "=======pipeline execution failed======="
-                    }
-                }
+        always{
+            echo "=======always======="
+        }
+        success{
+            echo "=======pipeline executed successful======="
+        }
+        failure{
+            echo "=======pipeline execution failed======="
+        }
+    }
 }
