@@ -8,16 +8,49 @@ pipeline {
             steps{
                 echo "Build"
                 sh "java --version"
+                post{
+                    always{
+                        echo "=======executiing Build======="
+                    }
+                    success{
+                        echo "=======execute Successful======="
+                    }
+                    failure{
+                        echo "=======execute failure======="
+                    }
+                }
             }
         }
         stage('Test'){
             steps{
                 echo "Test"
+                post{
+                    always{
+                        echo "=======executiing Test======="
+                    }
+                    success{
+                        echo "=======execute Successful======="
+                    }
+                    failure{
+                        echo "=======execute failure======="
+                    }
+                }
             }
         }
         stage('Deploy'){
             steps{
                 echo "$NAME, deployment complete."
+                post{
+                    always{
+                        echo "=======executiing Deployment======="
+                    }
+                    success{
+                        echo "=======execute Successful======="
+                    }
+                    failure{
+                        echo "=======execute failure======="
+                    }
+                }
             }
         }
     }
