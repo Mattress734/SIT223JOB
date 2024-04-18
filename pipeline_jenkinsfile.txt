@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+
+    }
     stages {
         stage('Build'){
             steps{
@@ -14,13 +17,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                retry(2){
-                    echo "Deploy"
-                }
-
-                timeout(time: 3, unit: 'SECONDS'){
-                    sleep 5
-                }
+                echo "$NAME, deployment complete."
             }
         }
     }
