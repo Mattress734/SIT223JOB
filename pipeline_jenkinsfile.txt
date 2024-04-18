@@ -6,14 +6,14 @@ pipeline {
     stages {
         stage('Build'){
             steps{
-                echo "Build"
+                echo "=======executiing Build======="
                 sh "java --version"
                 post{
                     always{
-                        echo "=======executiing Build======="
+                        echo "=======always======="
                     }
                     success{
-                        echo "=======execute Successful======="
+                        echo "=======execute successful======="
                     }
                     failure{
                         echo "=======execute failure======="
@@ -23,13 +23,13 @@ pipeline {
         }
         stage('Test'){
             steps{
-                echo "Test"
+                echo "=======executiing Test======="
                 post{
                     always{
-                        echo "=======executiing Test======="
+                        echo "=======always======="
                     }
                     success{
-                        echo "=======execute Successful======="
+                        echo "=======execute successful======="
                     }
                     failure{
                         echo "=======execute failure======="
@@ -39,13 +39,13 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                echo "$NAME, deployment complete."
+                echo "=======executiing Deployment======="
                 post{
                     always{
-                        echo "=======executiing Deployment======="
+                        echo "=======always======="
                     }
                     success{
-                        echo "=======execute Successful======="
+                        echo "=======execute successful======="
                     }
                     failure{
                         echo "=======execute failure======="
@@ -54,4 +54,15 @@ pipeline {
             }
         }
     }
+    post{
+                    always{
+                        echo "=======always======="
+                    }
+                    success{
+                        echo "=======pipeline executed successful======="
+                    }
+                    failure{
+                        echo "=======pipeline execution failed======="
+                    }
+                }
 }
