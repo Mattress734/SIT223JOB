@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build'){
             steps{
-                echo "=======executing Build======="
+                sh "=======executing Build======="
                 sh "java --version"
             }
             post{
@@ -37,6 +37,9 @@ pipeline {
                 }
                 failure{
                     echo "=======execute failure======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Test Status Update Notification",
+                    body: "Test Failed"
                 }
             }
         }
@@ -53,6 +56,9 @@ pipeline {
                 }
                 failure{
                     echo "=======execute failure======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Deploy Status Update Notification",
+                    body: "Deploy Failed"
                 }
             }
         }
