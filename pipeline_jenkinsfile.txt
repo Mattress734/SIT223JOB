@@ -14,10 +14,13 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                retry(3){
-                    sh 'command fails'
+                retry(2){
+                    echo "Deploy"
                 }
-                echo "Deploy"
+
+                timeout(time: 3, unit: 'SECONDS'){
+                    sleep 5
+                }
             }
         }
     }
