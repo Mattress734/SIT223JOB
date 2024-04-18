@@ -8,48 +8,48 @@ pipeline {
             steps{
                 echo "=======executiing Build======="
                 sh "java --version"
-                post{
-                    always{
-                        echo "=======always======="
-                    }
-                    success{
-                        echo "=======execute successful======="
-                    }
-                    failure{
-                        echo "=======execute failure======="
-                    }
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                }
+                failure{
+                    echo "=======execute failure======="
                 }
             }
         }
         stage('Test'){
             steps{
                 echo "=======executiing Test======="
-                post{
-                    always{
-                        echo "=======always======="
-                    }
-                    success{
-                        echo "=======execute successful======="
-                    }
-                    failure{
-                        echo "=======execute failure======="
-                    }
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                }
+                failure{
+                    echo "=======execute failure======="
                 }
             }
         }
         stage('Deploy'){
             steps{
                 echo "=======executiing Deployment======="
-                post{
-                    always{
-                        echo "=======always======="
-                    }
-                    success{
-                        echo "=======execute successful======="
-                    }
-                    failure{
-                        echo "=======execute failure======="
-                    }
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                }
+                failure{
+                    echo "=======execute failure======="
                 }
             }
         }
