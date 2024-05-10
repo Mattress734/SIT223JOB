@@ -27,8 +27,7 @@ pipeline {
             steps{
                 echo "=======executiing Test======="
                 echo "Unit and Integration Testing using Citrus"
-                echo "Each component of the code is checked indiviudally to ensure functionality
-                    before components are checked against each other, to ensure interactvity"
+                echo "Each component of the code is checked indiviudally to ensure functionality before components are checked against each other, to ensure interactvity"
             }
             post{
                 always{
@@ -52,8 +51,7 @@ pipeline {
             steps{
                 echo "=======executiing Deployment======="
                 echo "Code Analysis and Testing using SonarQube"
-                echo "Code checked against common conventions, organisational standards and 
-                    checked for common mistakes" 
+                echo "Code checked against common conventions, organisational standards and checked for common mistakes" 
             }
             post{
                 always{
@@ -71,8 +69,7 @@ pipeline {
             steps{
                 echo "=======executiing Deployment======="
                 echo "Security Scan Completed using Coverity"
-                echo "Codebase is checked for vulnerabilities that may be present, or any 
-                    code that may lead to vulnerabilities if deployed"
+                echo "Codebase is checked for vulnerabilities that may be present, or any code that may lead to vulnerabilities if deployed"
             }
             post{
                 always{
@@ -96,8 +93,7 @@ pipeline {
             steps{
                 echo "=======executiing Deployment======="
                 echo "Integration Tests Completed using Citrus"
-                echo "The code is checked again, this time ensuring that all different components function 
-                    together as intended, and that no new bugs are present since previous test"
+                echo "The code is checked again, this time ensuring that all different components function together as intended, and that no new bugs are present since previous test"
             }
             post{
                 always{
