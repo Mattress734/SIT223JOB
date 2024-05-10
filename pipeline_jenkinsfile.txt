@@ -7,7 +7,7 @@ pipeline {
         stage('Build'){
             steps{
                 echo "=======executing Build======="
-                sh "java --version"
+                echo "Build Automation using Jenkins"
             }
             post{
                 always{
@@ -15,19 +15,20 @@ pipeline {
                 }
                 success{
                     echo "=======execute successful======="
+                    echo "Build Successful"
                 }
                 failure{
                     echo "=======execute failure======="
-                    mail to: "matthewjkellett14@protonmail.com",
-                    subject: "Build Status Update Notification",
-                    body: "Build Failed"
+                    echo "Build Failed"
                 }
             }
         }
-        stage('Test'){
+        stage('Unit and Integration Tests'){
             steps{
                 echo "=======executiing Test======="
-                echo "test polling SCM"
+                echo "Unit and Integration Testing using Citrus"
+                echo "Each component of the code is checked indiviudally to ensure functionality
+                    before components are checked against each other, to ensure interactvity"
             }
             post{
                 always{
@@ -35,31 +36,101 @@ pipeline {
                 }
                 success{
                     echo "=======execute successful======="
-                }
-                failure{
-                    echo "=======execute failure======="
                     mail to: "matthewjkellett14@protonmail.com",
-                    subject: "Test Status Update Notification",
-                    body: "Test Failed"
-                }
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo "=======executiing Deployment======="
-            }
-            post{
-                always{
-                    echo "=======always======="
-                }
-                success{
-                    echo "=======execute successful======="
+                    subject: "Deploy Status Update Notification",
+                    body: "Test Successful"
                 }
                 failure{
                     echo "=======execute failure======="
                     mail to: "matthewjkellett14@protonmail.com",
                     subject: "Deploy Status Update Notification",
-                    body: "Deploy Failed"
+                    body: "Test Failed"
+                }
+            }
+        }
+        stage('Code Analysis'){
+            steps{
+                echo "=======executiing Deployment======="
+                echo "Code Analysis and Testing using SonarQube"
+                echo "Code checked against common conventions, organisational standards and 
+                    checked for common mistakes" 
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                }
+                failure{
+                    echo "=======execute failure======="
+                }
+            }
+        }
+        stage('Security Scan'){
+            steps{
+                echo "=======executiing Deployment======="
+                echo "Security Scan Completed using Coverity"
+                echo "Codebase is checked for vulnerabilities that may be present, or any 
+                    code that may lead to vulnerabilities if deployed"
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Deploy Status Update Notification",
+                    body: "Security Scan Successful"
+                }
+                failure{
+                    echo "=======execute failure======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Deploy Status Update Notification",
+                    body: "Security Scan Failed"
+                }
+            }
+        }
+        stage('Integration Tests on Staging'){
+            steps{
+                echo "=======executiing Deployment======="
+                echo "Integration Tests Completed using Citrus"
+                echo "The code is checked again, this time ensuring that all different components function 
+                    together as intended, and that no new bugs are present since previous test"
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Deploy Status Update Notification",
+                    body: "Test Successful"
+                }
+                failure{
+                    echo "=======execute failure======="
+                    mail to: "matthewjkellett14@protonmail.com",
+                    subject: "Deploy Status Update Notification",
+                    body: "Test Failed"
+                }
+            }
+        }
+        stage('Deploy to Production'){
+            steps{
+                echo "=======executiing Deployment======="
+                echo "Code is deployed, following all checks/ automated stages"
+            }
+            post{
+                always{
+                    echo "=======always======="
+                }
+                success{
+                    echo "=======execute successful======="
+                }
+                failure{
+                    echo "=======execute failure======="
                 }
             }
         }
